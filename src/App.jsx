@@ -1,28 +1,40 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero3D from './components/Hero3D';
+import InsightCards from './components/InsightCards';
+import MatchmakingFeed from './components/MatchmakingFeed';
+import AchievementsBar from './components/AchievementsBar';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
+    <div className="min-h-screen w-full bg-slate-950 text-slate-100 selection:bg-cyan-500/20 selection:text-white">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:py-10">
+        <header className="mb-6 flex items-center justify-between">
+          <div className="text-lg font-semibold tracking-tight text-white">Barise</div>
+          <nav className="flex items-center gap-2">
+            <button className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Home</button>
+            <button className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Matchmaking</button>
+            <button className="rounded-xl border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Chat</button>
+          </nav>
+        </header>
+
+        <Hero3D />
+
+        <section className="mt-8 space-y-6">
+          <InsightCards />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2">
+              <MatchmakingFeed />
+            </div>
+            <div>
+              <AchievementsBar />
+            </div>
+          </div>
+        </section>
+
+        <footer className="mt-10 border-t border-white/10 pt-6 text-center text-sm text-slate-400">
+          © {new Date().getFullYear()} Barise. Crafted with midnight glass aesthetics.
+        </footer>
       </div>
     </div>
-  )
+  );
 }
-
-export default App
